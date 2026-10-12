@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Admin — Orders</title>
+  <style>
+    body { font-family: Arial; background: #eaeded; padding: 20px; }
+    h1 { margin-bottom: 20px; }
+    input, button { padding: 10px; font-size: 14px; }
+    #orders { margin-top: 20px; }
+    .order {
+      background: white; padding: 16px; margin-bottom: 12px;
+      border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .order h3 { margin-bottom: 6px; }
+    .order ul { margin: 8px 0 0 20px; }
+    .total { color: #b12704; font-weight: bold; }
+    .meta { color: #666; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>🛒 Admin — Orders</h1>
+
+  <input type="password" id="key" placeholder="Admin key" />
+  <button onclick="load()">Load Orders</button>
+
+  <div id="orders"></div>
+
+  <script>
+    async function load() {
+      const key = document.getElementById("key").value;
+      const res = await fetch("http://localhost:3000/api/admin/orders", {
+        headers: { "x-admin-key": key },
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        document.getElementById("orders").innerHTML =
+          "<p style='color:red'>" + (data.error || "Error") + "</p>";
+        return;
+      }
+
+      if (data.length === 0) {
+        document.getElementById("orders").innerHTML = "<p>No orders yet.</p>";
+        return;
+      }
+
+      document.getElementById("orders").innerHTML = data.map(o => `
+        <div class="order">
+          <h3>Order #${o.id}</h3>
+          <p class="meta">
+            Customer: <b>${o.name}</b> (user #${o.userId}) &nbsp;•&nbsp;
+            ${o.date}
+          </p>
+          <p><b>Address:</b> ${o.address}</p>
+          <ul>
+            ${o.items.map(i =>
+              `<li>${i.name} × ${i.qty} — ₹${i.price * i.qty}</li>`
+            ).join("")}
+          </ul>
+          <p class="total">Total: ₹${o.total}</p>
+        </div>
+      `).join("");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopNow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ TOP BAR ============ -->
+  <header>
+    <div class="logo">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
+      <span>Shop<span class="accent">Now</span></span>
+    </div>
+
+    <div class="search-wrap">
+      <input type="text" id="search" placeholder="Search for products, brands and more...">
+      <button type="button" onclick="document.getElementById('search').focus()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="auth-btn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Account</span>
+      </button>
+
+      <button class="icon-btn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+        <span>Wishlist</span>
+      </button>
+
+      <button class="icon-btn" id="cart-btn">
+        <div class="cart-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span id="cart-count" class="cart-badge">0</span>
+        </div>
+        <span>Cart</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ SUB-NAV ============ -->
+  <nav id="categories" class="sub-nav">
+    <a onclick="filterCategory('All')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px;">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+      All Categories
+    </a>
+    <a onclick="filterCategory('Electronics')">Electronics</a>
+    <a onclick="filterCategory('Fashion')">Fashion</a>
+    <a onclick="filterCategory('Home')">Home &amp; Living</a>
+    <a onclick="filterCategory('All')">Beauty &amp; Personal Care</a>
+    <a onclick="filterCategory('All')">Toys &amp; Games</a>
+    <a onclick="filterCategory('All')">More ▾</a>
+  </nav>
+
+<!-- ============ HERO BANNER ============ -->
+<section class="hero-banner">
+  <img
+    src="http://127.0.0.1:5500/hero-sale.jpg"
+    alt="Big Sale — Up to 70% Off"
+    class="hero-banner-img"
+    onclick="document.getElementById('product-list').scrollIntoView({behavior:'smooth'})"
+  >
+</section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="features">
+    <div class="feature">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="1" y="3" width="15" height="13"></rect>
+        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+      </svg>
+      <div>
+        <h4>Fast &amp; Reliable Delivery</h4>
+        <p>Get your orders on time</p>
+      </div>
+    </div>
+    <div class="feature">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        <path d="m9 12 2 2 4-4"></path>
+      </svg>
+      <div>
+        <h4>Secure Payments</h4>
+        <p>Shop with confidence</p>
+      </div>
+    </div>
+    <div class="feature">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 14 4 9 9 4"></polyline>
+        <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+      </svg>
+      <div>
+        <h4>Easy Returns</h4>
+        <p>Hassle-free process</p>
+      </div>
+    </div>
+    <div class="feature">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+      </svg>
+      <div>
+        <h4>24/7 Customer Support</h4>
+        <p>We're here to help</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORY TILES ============ -->
+  <section class="categories-section">
+    <div class="section-head">
+      <h2>Shop by Category</h2>
+      <a href="#" class="view-all" onclick="event.preventDefault(); filterCategory('All');">View All Categories →</a>
+    </div>
+
+    <div class="category-tiles">
+      <div class="cat-tile" onclick="filterCategory('Electronics')">
+        <div class="cat-img cat-bg-blue">
+          <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=500&q=80" alt="Electronics">
+        </div>
+        <h3>Electronics</h3>
+        <p>Laptops, Mobiles, Accessories</p>
+      </div>
+      <div class="cat-tile" onclick="filterCategory('Fashion')">
+        <div class="cat-img cat-bg-pink">
+          <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=500&q=80" alt="Fashion">
+        </div>
+        <h3>Fashion</h3>
+        <p>Men, Women, Kids</p>
+      </div>
+      <div class="cat-tile" onclick="filterCategory('Home')">
+        <div class="cat-img cat-bg-peach">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=500&q=80" alt="Home">
+        </div>
+        <h3>Home &amp; Living</h3>
+        <p>Furniture, Decor, Kitchen</p>
+      </div>
+      <div class="cat-tile">
+        <div class="cat-img cat-bg-purple">
+          <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=500&q=80" alt="Beauty">
+        </div>
+        <h3>Beauty &amp; Personal Care</h3>
+        <p>Skincare, Haircare, Fragrance</p>
+      </div>
+      <div class="cat-tile">
+        <div class="cat-img cat-bg-green">
+          <img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?auto=format&fit=crop&w=500&q=80" alt="Toys">
+        </div>
+        <h3>Toys &amp; Games</h3>
+        <p>For all ages</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTS ============ -->
+  <main>
+    <h2 class="products-heading">Featured Products</h2>
+    <div id="product-list"></div>
+  </main>
+
+  <!-- ============ BOTTOM CTA ============ -->
+  <section class="bottom-cta">
+    <div class="cta-left">
+      <svg class="cta-truck" viewBox="0 0 24 24" fill="none" stroke="#ffc107" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="1" y="3" width="15" height="13"></rect>
+        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+      </svg>
+      <div>
+        <h3>Get Your Favorites</h3>
+        <p>at Unbeatable Prices!</p>
+      </div>
+    </div>
+    <button class="btn-cta" onclick="document.getElementById('product-list').scrollIntoView({behavior:'smooth'})">
+      Start Shopping →
+    </button>
+    <p class="tagline">
+      <em>Better Products<br>Happier You</em>
+    </p>
+  </section>
+
+  <!-- ============ CART PANEL ============ -->
+  <div id="cart-panel" class="hidden">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <h3>Total: ₹<span id="cart-total">0</span></h3>
+    <button id="checkout-btn">Place Order</button>
+    <button id="close-cart">Close</button>
+  </div>
+
+  <!-- ============ PRODUCT DETAIL MODAL ============ -->
+  <div id="modal" class="hidden">
+    <div id="modal-box">
+      <button id="modal-close">✖</button>
+      <div class="product-detail">
+        <div class="gallery">
+          <img id="modal-img" src="" alt="">
+          <div class="thumbs" id="modal-thumbs"></div>
+        </div>
+        <div class="details">
+          <h2 id="modal-name"></h2>
+          <p id="modal-category" class="modal-category"></p>
+          <div class="rating-row">
+            <span id="modal-stars">⭐⭐⭐⭐☆</span>
+            <span id="modal-rating-text" class="muted">4.2 (128 reviews)</span>
+          </div>
+          <p class="price" id="modal-price"></p>
+          <p id="modal-desc" class="desc"></p>
+          <div class="action-row">
+            <button id="modal-add" class="btn-add">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="reviews-section">
+        <h3>Customer Reviews</h3>
+        <div id="modal-reviews"></div>
+      </div>
+      <div class="similar-section">
+        <h3>Similar Products</h3>
+        <div id="modal-similar" class="similar-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ AUTH MODAL ============ -->
+  <div id="auth-modal" class="hidden">
+    <div id="auth-overlay"></div>
+    <div id="auth-box">
+      <button id="auth-close">✖</button>
+      <h2 id="auth-title">Login</h2>
+      <p id="auth-subtitle" class="auth-subtitle">Welcome back! Please login to continue.</p>
+      <input type="text" id="auth-name" placeholder="Your name">
+      <input type="email" id="auth-email" placeholder="Email">
+      <input type="password" id="auth-password" placeholder="Password (min 6 characters)">
+      <p id="auth-error"></p>
+      <button id="auth-submit">Login</button>
+      <p class="auth-toggle-row">
+        <a href="#" id="auth-toggle">New here? Create an account</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
