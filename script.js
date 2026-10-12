@@ -552,7 +552,7 @@ document.getElementById("auth-submit").addEventListener("click", async () => {
     : { name, email, password };
 
   try {
-    const res = await fetch("http://localhost:3000" + url, {
+    const res = await fetch("https://shop-now-api-j9sb.onrender.com" + url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
