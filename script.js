@@ -597,7 +597,7 @@ document.getElementById("checkout-btn").addEventListener("click", async () => {
   if (!address) return;
 
   try {
-    const res = await fetch("http://localhost:3000/api/orders", {
+    const res = await fetch("https://shop-now-api-j9sb.onrender.com/api/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -631,7 +631,7 @@ document.getElementById("checkout-btn").addEventListener("click", async () => {
   }
 });
 
-fetch("http://localhost:3000/api/products")
+fetch("https://shop-now-api-j9sb.onrender.com/api/products")
   .then(res => res.json())
   .then(data => {
     products = data;
